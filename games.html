@@ -1,0 +1,27 @@
+---
+title: 游戏Demo展示
+layout: default
+permalink: /games/
+---
+
+<section class="page-hero">
+  <div class="container">
+    <h1>游戏Demo展示</h1>
+    <p>这里放我做过的游戏 Demo，点击封面可查看详情、视频和技术说明。</p>
+  </div>
+</section>
+
+<main class="container">
+  <section class="game-grid">
+    {% for game in site.games %}
+      <a class="game-card" href="{{ game.url | relative_url }}">
+        <img src="{{ game.cover | relative_url }}" alt="{{ game.title }}">
+        <div class="game-card-body">
+          <h3>{{ game.title }}</h3>
+          <p>{{ game.summary }}</p>
+          <span class="game-tag">{{ game.genre }}</span>
+        </div>
+      </a>
+    {% endfor %}
+  </section>
+</main>
