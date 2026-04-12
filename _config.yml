@@ -3,3 +3,8 @@ description: 记录开发、学习和生活
 theme: minima
 baseurl: /Home
 url: https://arisgroatle.github.io
+
+collections:
+  games:
+    output: true
+    permalink: /games/:name/
