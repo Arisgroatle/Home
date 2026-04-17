@@ -7,15 +7,17 @@ genre: "多人联机"
 tech: "Unity / C# / TCP + KCP / Protobuf"
 demo_status: "可演示"
 video_file: /assets/videos/shooter-demo.mp4
-download_file: /assets/downloads/Demo002游戏本体_26041701.rar
+download_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo.zip
 download_label: 下载 Demo
 ---
 
 <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
   <h1 style="margin:0;">{{ page.title }}</h1>
   <a
-    href="{{ page.download_file | relative_url }}"
-    download
+    href="{% if page.download_file contains '://' %}{{ page.download_file }}{% else %}{{ page.download_file | relative_url }}{% endif %}"
+    {% unless page.download_file contains '://' %}download{% endunless %}
+    target="_blank"
+    rel="noopener"
     style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;font-weight:600;text-decoration:none;box-shadow:0 10px 24px rgba(37,99,235,0.22);white-space:nowrap;"
   >
     {{ page.download_label }}
