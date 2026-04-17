@@ -1,7 +1,7 @@
 ---
 title: "示例"
 layout: default
-cover: /assets/images/games/shooter-cover.jpg
+cover: /assets/images/games/Default.jpg
 summary: "一个示例。"
 genre: "示例"
 tech: "示例"
