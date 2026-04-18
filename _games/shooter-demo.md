@@ -7,7 +7,7 @@ genre: "多人联机"
 tech: "Unity / C# / TCP + KCP / Protobuf"
 demo_status: "可演示"
 video_file: /assets/videos/shooter-demo.mp4
-download_file: https://github.com/Arisgroatle/Home/releases/download/v1.0.0/Demo002._26041701.rar
+download_file: https://github.com/Arisgroatle/Home/releases/download/v1.0.1/Demo002_26041801.rar
 download_label: 下载 Demo
 ---
 
