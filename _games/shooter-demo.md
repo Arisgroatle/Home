@@ -46,22 +46,28 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
 
 ## 框架
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px;">
-  <img
-    src="{{ page.pic_network_sync_framework | relative_url }}"
-    alt="{{ page.title }} 网络同步框架（用位置同步示例）"
-    loading="lazy"
-    style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);"
-  >
-  <img
-    src="{{ page.pic_skill_system | relative_url }}"
-    alt="{{ page.title }} 技能系统"
-    loading="lazy"
-    style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);"
-  >
-  <img
-    src="{{ page.pic_task_system | relative_url }}"
-    alt="{{ page.title }} 任务系统"
-    loading="lazy"
-    style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);"
-  >
+  <a href="{{ page.pic_network_sync_framework | relative_url }}" target="_blank" rel="noopener" style="display:block;">
+    <img
+      src="{{ page.pic_network_sync_framework | relative_url }}"
+      alt="{{ page.title }} 网络同步框架（用位置同步示例）"
+      loading="lazy"
+      style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);cursor:zoom-in;"
+    >
+  </a>
+  <a href="{{ page.pic_skill_system | relative_url }}" target="_blank" rel="noopener" style="display:block;">
+    <img
+      src="{{ page.pic_skill_system | relative_url }}"
+      alt="{{ page.title }} 技能系统"
+      loading="lazy"
+      style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);cursor:zoom-in;"
+    >
+  </a>
+  <a href="{{ page.pic_task_system | relative_url }}" target="_blank" rel="noopener" style="display:block;">
+    <img
+      src="{{ page.pic_task_system | relative_url }}"
+      alt="{{ page.title }} 任务系统"
+      loading="lazy"
+      style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);cursor:zoom-in;"
+    >
+  </a>
 </div>
