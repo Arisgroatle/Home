@@ -1,7 +1,7 @@
 ---
 title: "联机射击 Demo"
 layout: default
-cover: /assets/images/games/shooter-cover.jpg
+cover: /assets/images/games/shooter-demo/shooter-cover.jpg
 summary: "一个双人联机射击原型，包含大厅、建房、对战和结算。"
 genre: "多人联机"
 tech: "Unity / C# / TCP + KCP / Protobuf"
