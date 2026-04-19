@@ -1,14 +1,17 @@
 ---
 title: "联机射击 Demo"
 layout: default
-cover: /assets/images/games/shooter-cover.png
+cover: /assets/images/games/shooter-cover.jpg
 summary: "一个双人联机射击原型，包含大厅、建房、对战和结算。"
 genre: "多人联机"
 tech: "Unity / C# / TCP + KCP / Protobuf"
 demo_status: "可演示"
-video_file: /assets/videos/shooter-demo.mp4
-download_file: https://github.com/Arisgroatle/Home/releases/download/v1.0.1/Demo002_26041801.rar
+video_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo.mp4
+download_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo.zip
 download_label: 下载 Demo
+pic_network_sync_framework: /assets/images/games/shooter-demo/network-sync-framework.png
+pic_skill_system: /assets/images/games/shooter-demo/skill-system.png
+pic_task_system: /assets/images/games/shooter-demo/task-system.png
 ---
 
 <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
@@ -37,6 +40,28 @@ download_label: 下载 Demo
 
 ## 演示视频
 <video controls playsinline width="100%" poster="{{ page.cover | relative_url }}">
-  <source src="{{ page.video_file | relative_url }}" type="video/mp4">
+  <source src="{% if page.video_file contains '://' %}{{ page.video_file }}{% else %}{{ page.video_file | relative_url }}{% endif %}" type="video/mp4">
   你的浏览器不支持 video 标签。
 </video>
+
+## 框架
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px;">
+  <img
+    src="{{ page.pic_network_sync_framework | relative_url }}"
+    alt="{{ page.title }} 网络同步框架（用位置同步示例）"
+    loading="lazy"
+    style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);"
+  >
+  <img
+    src="{{ page.pic_skill_system | relative_url }}"
+    alt="{{ page.title }} 技能系统"
+    loading="lazy"
+    style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);"
+  >
+  <img
+    src="{{ page.pic_task_system | relative_url }}"
+    alt="{{ page.title }} 任务系统"
+    loading="lazy"
+    style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);"
+  >
+</div>
