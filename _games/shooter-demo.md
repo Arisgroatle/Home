@@ -75,7 +75,7 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
 
 
 
-## 演示视频
+## 演示视频（若视频或图片无法加载请连接VPN）
 <video controls playsinline width="100%" poster="{{ page.cover | relative_url }}">
   <source src="{% if page.video_file contains '://' %}{{ page.video_file }}{% else %}{{ page.video_file | relative_url }}{% endif %}" type="video/mp4">
   你的浏览器不支持 video 标签。
