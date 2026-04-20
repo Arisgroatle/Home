@@ -179,6 +179,8 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
     border-radius: 24px;
     background: rgba(2, 6, 23, 0.78);
     border: 1px solid rgba(255, 255, 255, 0.12);
+    touch-action: none;
+    user-select: none;
   }
 
   .demo-lightbox-image {
@@ -186,9 +188,9 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
     max-width: 100%;
     max-height: 100%;
     user-select: none;
-    touch-action: none;
     transform-origin: center center;
     will-change: transform;
+    pointer-events: none;
   }
 
   .demo-lightbox-hint {
@@ -315,7 +317,7 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
       clampOffset();
       image.style.transition = dragging || animate === false ? "none" : "transform 120ms ease";
       image.style.transform = "translate(" + offsetX + "px, " + offsetY + "px) scale(" + scale + ")";
-      image.style.cursor = scale > 1 ? (dragging ? "grabbing" : "grab") : "zoom-in";
+      stage.style.cursor = scale > 1 ? (dragging ? "grabbing" : "grab") : "zoom-in";
       zoomLabel.textContent = Math.round(scale * 100) + "%";
     }
 
@@ -365,7 +367,7 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
       dragging = false;
       if (activePointerId !== null) {
         try {
-          image.releasePointerCapture(activePointerId);
+          stage.releasePointerCapture(activePointerId);
         } catch (error) {
         }
       }
@@ -416,7 +418,7 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
       resetView();
     });
 
-    image.addEventListener("dblclick", function () {
+    stage.addEventListener("dblclick", function () {
       if (scale === 1) {
         setScale(2);
       } else {
@@ -424,19 +426,20 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
       }
     });
 
-    image.addEventListener("pointerdown", function (event) {
+    stage.addEventListener("pointerdown", function (event) {
       if (scale <= 1) {
         return;
       }
+      event.preventDefault();
       dragging = true;
       activePointerId = event.pointerId;
       dragStartX = event.clientX - offsetX;
       dragStartY = event.clientY - offsetY;
-      image.setPointerCapture(activePointerId);
+      stage.setPointerCapture(activePointerId);
       render(false);
     });
 
-    image.addEventListener("pointermove", function (event) {
+    stage.addEventListener("pointermove", function (event) {
       if (!dragging || event.pointerId !== activePointerId) {
         return;
       }
@@ -445,9 +448,8 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
       render(false);
     });
 
-    image.addEventListener("pointerup", endDrag);
-    image.addEventListener("pointercancel", endDrag);
-    image.addEventListener("pointerleave", endDrag);
+    stage.addEventListener("pointerup", endDrag);
+    stage.addEventListener("pointercancel", endDrag);
 
     window.addEventListener("keydown", function (event) {
       if (overlay.hidden) {
