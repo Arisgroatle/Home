@@ -81,30 +81,393 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
   你的浏览器不支持 video 标签。
 </video>
 
+<style>
+  .demo-lightbox-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .demo-lightbox-trigger {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+  }
+
+  .demo-lightbox-trigger img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  }
+
+  .demo-lightbox-overlay[hidden] {
+    display: none;
+  }
+
+  .demo-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    padding: 24px;
+    background: rgba(3, 7, 18, 0.82);
+    backdrop-filter: blur(6px);
+  }
+
+  .demo-lightbox-panel {
+    width: min(96vw, 1400px);
+    height: min(88vh, 920px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 14px;
+  }
+
+  .demo-lightbox-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    color: #f8fafc;
+  }
+
+  .demo-lightbox-caption {
+    font-size: 15px;
+    color: rgba(248, 250, 252, 0.88);
+  }
+
+  .demo-lightbox-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .demo-lightbox-zoom {
+    min-width: 56px;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(248, 250, 252, 0.86);
+  }
+
+  .demo-lightbox-btn {
+    border: 0;
+    border-radius: 999px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .demo-lightbox-btn:hover {
+    background: rgba(255, 255, 255, 0.24);
+  }
+
+  .demo-lightbox-stage {
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    background: rgba(2, 6, 23, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .demo-lightbox-image {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    user-select: none;
+    touch-action: none;
+    transform-origin: center center;
+    will-change: transform;
+  }
+
+  .demo-lightbox-hint {
+    text-align: center;
+    color: rgba(248, 250, 252, 0.76);
+    font-size: 14px;
+  }
+
+  @media (max-width: 720px) {
+    .demo-lightbox-overlay {
+      padding: 12px;
+    }
+
+    .demo-lightbox-panel {
+      height: min(92vh, 960px);
+    }
+
+    .demo-lightbox-toolbar {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
+
 ## 框架
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px;">
-  <a href="{{ page.pic_network_sync_framework | relative_url }}" target="_blank" rel="noopener" style="display:block;">
+<div class="demo-lightbox-gallery">
+  <button
+    type="button"
+    class="demo-lightbox-trigger"
+    data-demo-lightbox-src="{{ page.pic_network_sync_framework | relative_url }}"
+    data-demo-lightbox-alt="{{ page.title }} 网络同步框架（用位置同步示例）"
+  >
     <img
       src="{{ page.pic_network_sync_framework | relative_url }}"
       alt="{{ page.title }} 网络同步框架（用位置同步示例）"
       loading="lazy"
-      style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);cursor:zoom-in;"
+      style="cursor:zoom-in;"
     >
-  </a>
-  <a href="{{ page.pic_skill_system | relative_url }}" target="_blank" rel="noopener" style="display:block;">
+  </button>
+  <button
+    type="button"
+    class="demo-lightbox-trigger"
+    data-demo-lightbox-src="{{ page.pic_skill_system | relative_url }}"
+    data-demo-lightbox-alt="{{ page.title }} 技能系统"
+  >
     <img
       src="{{ page.pic_skill_system | relative_url }}"
       alt="{{ page.title }} 技能系统"
       loading="lazy"
-      style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);cursor:zoom-in;"
+      style="cursor:zoom-in;"
     >
-  </a>
-  <a href="{{ page.pic_task_system | relative_url }}" target="_blank" rel="noopener" style="display:block;">
+  </button>
+  <button
+    type="button"
+    class="demo-lightbox-trigger"
+    data-demo-lightbox-src="{{ page.pic_task_system | relative_url }}"
+    data-demo-lightbox-alt="{{ page.title }} 任务系统"
+  >
     <img
       src="{{ page.pic_task_system | relative_url }}"
       alt="{{ page.title }} 任务系统"
       loading="lazy"
-      style="display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 30px rgba(15,23,42,0.12);cursor:zoom-in;"
+      style="cursor:zoom-in;"
     >
-  </a>
+  </button>
 </div>
+
+<div class="demo-lightbox-overlay" data-demo-lightbox hidden>
+  <div class="demo-lightbox-panel">
+    <div class="demo-lightbox-toolbar">
+      <div class="demo-lightbox-caption" data-demo-lightbox-caption>图片预览</div>
+      <div class="demo-lightbox-controls">
+        <span class="demo-lightbox-zoom" data-demo-lightbox-zoom>100%</span>
+        <button type="button" class="demo-lightbox-btn" data-demo-lightbox-action="zoom-out">缩小</button>
+        <button type="button" class="demo-lightbox-btn" data-demo-lightbox-action="zoom-in">放大</button>
+        <button type="button" class="demo-lightbox-btn" data-demo-lightbox-action="reset">重置</button>
+        <button type="button" class="demo-lightbox-btn" data-demo-lightbox-action="close">关闭</button>
+      </div>
+    </div>
+    <div class="demo-lightbox-stage" data-demo-lightbox-stage>
+      <img class="demo-lightbox-image" data-demo-lightbox-image alt="">
+    </div>
+    <div class="demo-lightbox-hint">滚轮可缩放，拖动可查看局部，按 Esc 可关闭。</div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var overlay = document.querySelector("[data-demo-lightbox]");
+    if (!overlay) {
+      return;
+    }
+
+    var triggers = document.querySelectorAll("[data-demo-lightbox-src]");
+    var stage = overlay.querySelector("[data-demo-lightbox-stage]");
+    var image = overlay.querySelector("[data-demo-lightbox-image]");
+    var caption = overlay.querySelector("[data-demo-lightbox-caption]");
+    var zoomLabel = overlay.querySelector("[data-demo-lightbox-zoom]");
+    var controls = overlay.querySelectorAll("[data-demo-lightbox-action]");
+    var bodyOverflow = "";
+    var scale = 1;
+    var minScale = 1;
+    var maxScale = 4;
+    var zoomStep = 0.25;
+    var offsetX = 0;
+    var offsetY = 0;
+    var dragging = false;
+    var activePointerId = null;
+    var dragStartX = 0;
+    var dragStartY = 0;
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function clampOffset() {
+      var maxOffsetX = Math.max(0, (image.offsetWidth * (scale - 1)) / 2);
+      var maxOffsetY = Math.max(0, (image.offsetHeight * (scale - 1)) / 2);
+      offsetX = clamp(offsetX, -maxOffsetX, maxOffsetX);
+      offsetY = clamp(offsetY, -maxOffsetY, maxOffsetY);
+    }
+
+    function render(animate) {
+      clampOffset();
+      image.style.transition = dragging || animate === false ? "none" : "transform 120ms ease";
+      image.style.transform = "translate(" + offsetX + "px, " + offsetY + "px) scale(" + scale + ")";
+      image.style.cursor = scale > 1 ? (dragging ? "grabbing" : "grab") : "zoom-in";
+      zoomLabel.textContent = Math.round(scale * 100) + "%";
+    }
+
+    function resetView() {
+      scale = 1;
+      offsetX = 0;
+      offsetY = 0;
+      dragging = false;
+      activePointerId = null;
+      render(false);
+    }
+
+    function closeLightbox() {
+      overlay.hidden = true;
+      document.body.style.overflow = bodyOverflow;
+      image.removeAttribute("src");
+      image.alt = "";
+      resetView();
+    }
+
+    function openLightbox(src, alt) {
+      bodyOverflow = document.body.style.overflow;
+      overlay.hidden = false;
+      document.body.style.overflow = "hidden";
+      image.src = src;
+      image.alt = alt || "";
+      caption.textContent = alt || "图片预览";
+      resetView();
+    }
+
+    function setScale(nextScale) {
+      scale = clamp(nextScale, minScale, maxScale);
+      if (scale === minScale) {
+        offsetX = 0;
+        offsetY = 0;
+      }
+      render();
+    }
+
+    function endDrag(pointerEvent) {
+      if (!dragging) {
+        return;
+      }
+      if (pointerEvent && activePointerId !== null && pointerEvent.pointerId !== activePointerId) {
+        return;
+      }
+      dragging = false;
+      if (activePointerId !== null) {
+        try {
+          image.releasePointerCapture(activePointerId);
+        } catch (error) {
+        }
+      }
+      activePointerId = null;
+      render(false);
+    }
+
+    Array.prototype.forEach.call(triggers, function (trigger) {
+      trigger.addEventListener("click", function () {
+        openLightbox(
+          trigger.getAttribute("data-demo-lightbox-src"),
+          trigger.getAttribute("data-demo-lightbox-alt")
+        );
+      });
+    });
+
+    Array.prototype.forEach.call(controls, function (control) {
+      control.addEventListener("click", function () {
+        var action = control.getAttribute("data-demo-lightbox-action");
+        if (action === "zoom-in") {
+          setScale(scale + zoomStep);
+        } else if (action === "zoom-out") {
+          setScale(scale - zoomStep);
+        } else if (action === "reset") {
+          resetView();
+        } else if (action === "close") {
+          closeLightbox();
+        }
+      });
+    });
+
+    overlay.addEventListener("click", function (event) {
+      if (event.target === overlay) {
+        closeLightbox();
+      }
+    });
+
+    stage.addEventListener(
+      "wheel",
+      function (event) {
+        event.preventDefault();
+        setScale(scale + (event.deltaY < 0 ? zoomStep : -zoomStep));
+      },
+      { passive: false }
+    );
+
+    image.addEventListener("load", function () {
+      resetView();
+    });
+
+    image.addEventListener("dblclick", function () {
+      if (scale === 1) {
+        setScale(2);
+      } else {
+        resetView();
+      }
+    });
+
+    image.addEventListener("pointerdown", function (event) {
+      if (scale <= 1) {
+        return;
+      }
+      dragging = true;
+      activePointerId = event.pointerId;
+      dragStartX = event.clientX - offsetX;
+      dragStartY = event.clientY - offsetY;
+      image.setPointerCapture(activePointerId);
+      render(false);
+    });
+
+    image.addEventListener("pointermove", function (event) {
+      if (!dragging || event.pointerId !== activePointerId) {
+        return;
+      }
+      offsetX = event.clientX - dragStartX;
+      offsetY = event.clientY - dragStartY;
+      render(false);
+    });
+
+    image.addEventListener("pointerup", endDrag);
+    image.addEventListener("pointercancel", endDrag);
+    image.addEventListener("pointerleave", endDrag);
+
+    window.addEventListener("keydown", function (event) {
+      if (overlay.hidden) {
+        return;
+      }
+      if (event.key === "Escape") {
+        closeLightbox();
+      } else if (event.key === "+" || event.key === "=") {
+        setScale(scale + zoomStep);
+      } else if (event.key === "-" || event.key === "_") {
+        setScale(scale - zoomStep);
+      } else if (event.key === "0") {
+        resetView();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (!overlay.hidden) {
+        render(false);
+      }
+    });
+  })();
+</script>
