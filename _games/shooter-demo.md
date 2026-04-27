@@ -7,24 +7,40 @@ genre: "多人联机"
 tech: "Unity / C# / TCP + KCP / Protobuf"
 demo_status: "可演示"
 video_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo.mp4
-download_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo.zip
-download_label: 下载 Demo
+download_pc_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo.zip
+download_pc_label: 下载PC版
+download_android_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo-android.apk
+download_android_label: 下载安卓版
 pic_network_sync_framework: /assets/images/games/shooter-demo/network-sync-framework.png
 pic_skill_system: /assets/images/games/shooter-demo/skill-system.png
 pic_task_system: /assets/images/games/shooter-demo/task-system.png
+pic_extra_1: /assets/images/games/shooter-demo/supplement-1.png
+pic_extra_2: /assets/images/games/shooter-demo/supplement-2.png
+pic_extra_3: /assets/images/games/shooter-demo/supplement-3.png
 ---
 
 <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
   <h1 style="margin:0;">{{ page.title }}</h1>
-  <a
-    href="{% if page.download_file contains '://' %}{{ page.download_file }}{% else %}{{ page.download_file | relative_url }}{% endif %}"
-    {% unless page.download_file contains '://' %}download{% endunless %}
-    target="_blank"
-    rel="noopener"
-    style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;font-weight:600;text-decoration:none;box-shadow:0 10px 24px rgba(37,99,235,0.22);white-space:nowrap;"
-  >
-    {{ page.download_label }}
-  </a>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <a
+      href="{% if page.download_pc_file contains '://' %}{{ page.download_pc_file }}{% else %}{{ page.download_pc_file | relative_url }}{% endif %}"
+      {% unless page.download_pc_file contains '://' %}download{% endunless %}
+      target="_blank"
+      rel="noopener"
+      style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;font-weight:600;text-decoration:none;box-shadow:0 10px 24px rgba(37,99,235,0.22);white-space:nowrap;"
+    >
+      {{ page.download_pc_label }}
+    </a>
+    <a
+      href="{% if page.download_android_file contains '://' %}{{ page.download_android_file }}{% else %}{{ page.download_android_file | relative_url }}{% endif %}"
+      {% unless page.download_android_file contains '://' %}download{% endunless %}
+      target="_blank"
+      rel="noopener"
+      style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#0f766e,#0f9b8e);color:#ffffff;font-weight:600;text-decoration:none;box-shadow:0 10px 24px rgba(15,118,110,0.22);white-space:nowrap;"
+    >
+      {{ page.download_android_label }}
+    </a>
+  </div>
 </div>
 
 ![{{ page.title }}]({{ page.cover | relative_url }})
@@ -215,7 +231,7 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
   }
 </style>
 
-## 框架
+## 框架图片
 <div class="demo-lightbox-gallery">
   <button
     type="button"
@@ -252,6 +268,49 @@ pic_task_system: /assets/images/games/shooter-demo/task-system.png
     <img
       src="{{ page.pic_task_system | relative_url }}"
       alt="{{ page.title }} 任务系统"
+      loading="lazy"
+      style="cursor:zoom-in;"
+    >
+  </button>
+</div>
+
+## 补充图片
+<div class="demo-lightbox-gallery">
+  <button
+    type="button"
+    class="demo-lightbox-trigger"
+    data-demo-lightbox-src="{{ page.pic_extra_1 | relative_url }}"
+    data-demo-lightbox-alt="{{ page.title }} 补充图片 1"
+  >
+    <img
+      src="{{ page.pic_extra_1 | relative_url }}"
+      alt="{{ page.title }} 补充图片 1"
+      loading="lazy"
+      style="cursor:zoom-in;"
+    >
+  </button>
+  <button
+    type="button"
+    class="demo-lightbox-trigger"
+    data-demo-lightbox-src="{{ page.pic_extra_2 | relative_url }}"
+    data-demo-lightbox-alt="{{ page.title }} 补充图片 2"
+  >
+    <img
+      src="{{ page.pic_extra_2 | relative_url }}"
+      alt="{{ page.title }} 补充图片 2"
+      loading="lazy"
+      style="cursor:zoom-in;"
+    >
+  </button>
+  <button
+    type="button"
+    class="demo-lightbox-trigger"
+    data-demo-lightbox-src="{{ page.pic_extra_3 | relative_url }}"
+    data-demo-lightbox-alt="{{ page.title }} 补充图片 3"
+  >
+    <img
+      src="{{ page.pic_extra_3 | relative_url }}"
+      alt="{{ page.title }} 补充图片 3"
       loading="lazy"
       style="cursor:zoom-in;"
     >
