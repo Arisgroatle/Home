@@ -7,6 +7,7 @@ genre: "多人联机"
 tech: "Unity / C# / TCP + KCP / Protobuf"
 demo_status: "可演示"
 video_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo.mp4
+android_video_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo-android.mp4
 download_pc_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo.zip
 download_pc_label: 下载PC版
 download_android_file: https://github.com/Arisgroatle/Home/releases/latest/download/shooter-demo-android.apk
@@ -94,6 +95,12 @@ pic_extra_3: /assets/images/games/shooter-demo/supplement-3.png
 ## 演示视频（若视频或图片无法加载请连接VPN）
 <video controls playsinline width="100%" poster="{{ page.cover | relative_url }}">
   <source src="{% if page.video_file contains '://' %}{{ page.video_file }}{% else %}{{ page.video_file | relative_url }}{% endif %}" type="video/mp4">
+  你的浏览器不支持 video 标签。
+</video>
+
+## 安卓演示视频
+<video controls playsinline width="100%" poster="{{ page.cover | relative_url }}">
+  <source src="{% if page.android_video_file contains '://' %}{{ page.android_video_file }}{% else %}{{ page.android_video_file | relative_url }}{% endif %}" type="video/mp4">
   你的浏览器不支持 video 标签。
 </video>
 
@@ -275,7 +282,7 @@ pic_extra_3: /assets/images/games/shooter-demo/supplement-3.png
 </div>
 
 ## 补充图片
-<div class="demo-lightbox-gallery">
+<!-- <div class="demo-lightbox-gallery">
   <button
     type="button"
     class="demo-lightbox-trigger"
@@ -315,7 +322,7 @@ pic_extra_3: /assets/images/games/shooter-demo/supplement-3.png
       style="cursor:zoom-in;"
     >
   </button>
-</div>
+</div> -->
 
 <div class="demo-lightbox-overlay" data-demo-lightbox hidden>
   <div class="demo-lightbox-panel">
